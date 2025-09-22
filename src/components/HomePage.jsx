@@ -30,7 +30,7 @@ const landingPagesData = [
 ];
 
 const HeroSection = (
-  { data, onScroll, isVisible } // can be reused for more landing pages, planning to add 2 more landing pages
+  { data, onScroll, isVisible } // can be reused for more landing pages, planning to add 2 more landing pages...Ashwanth suggestions.
 ) => (
   <section
     className={`absolute inset-0 h-screen w-full bg-cover bg-center transition-opacity duration-1000 ease-in-out ${
@@ -90,11 +90,11 @@ const HomePage = () => {
   const [activeHero, setActiveHero] = useState(0);
   const [products, setProducts] = useState([]);
 
-  const dealSectionRef = useRef(null); // section ref should be declared prior as null, such that they can be assigned later for
-  const productsSectionRef = useRef(null); //ref-references
+  const dealSectionRef = useRef(null); // section ref should be declared prior as null, such that they can be assigned later for ref-references
+  const productsSectionRef = useRef(null);
 
   useEffect(() => {
-    // expects a clear function / undefined
+    // useEffect expects a clear function / undefined
     const loadProducts = async () => {
       // `loadProducts` clear function
       setProducts(await fetchProducts());

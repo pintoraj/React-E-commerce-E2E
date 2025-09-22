@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { ShoppingCart, Heart } from "lucide-react"; // npm install lucide-react
+import { ShoppingCart, Heart } from "lucide-react";
+// (npm install lucide-react) - everyone else it'll conflict !!!
 
 const ProductCard = ({ product }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -7,13 +8,10 @@ const ProductCard = ({ product }) => {
   return (
     <div
       className="relative bg-white border border-gray-100 rounded-xl shadow-sm flex flex-col justify-between h-full group 
-                 transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-1" // Card lift effect
+                 transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-1" // card lift effect translate-y-1
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* Product Badges (NEW, HOT, SALE)  */}
-      {/* {getBadge()}  */}
-
       <div className="image-container relative w-full h-48 flex items-center justify-center mb-4 overflow-hidden rounded-t-lg">
         <img
           src={
