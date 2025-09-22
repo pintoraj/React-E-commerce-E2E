@@ -7,7 +7,7 @@ const ProductCard = ({ product }) => {
 
   return (
     <div
-      className="relative bg-white border border-gray-100 rounded-xl shadow-sm flex flex-col justify-between h-full group 
+      className="relative bg-white border border-gray-100 rounded-xl shadow-sm flex flex-col justify-between h-full group
                  transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-1" // card lift effect translate-y-1
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -17,11 +17,11 @@ const ProductCard = ({ product }) => {
           src={
             isHovered && product.images?.[0]
               ? product.images[0] // if both are true
-              : product.thumbnail // if both are vice versa, then thumbnail
+              : product.thumbnail // if both isHovered false, then thumbnail
             //stll both images should swap inbetween so `IsHovered` helps;
           }
           alt={product.title}
-          className="max-h-full max-w-full object-contain 
+          className="max-h-full max-w-full object-contain
                      transition-transform duration-500 ease-in-out group-hover:scale-110"
         />
         <div
@@ -30,20 +30,20 @@ const ProductCard = ({ product }) => {
         />
         <div
           className="absolute bottom-0 left-0 right-0 p-4 flex justify-center items-center space-x-3
-                     transform translate-y-full group-hover:translate-y-0 
+                     transform translate-y-full group-hover:translate-y-0
                      transition-transform duration-500 ease-in-out"
         >
           <button
             className="bg-white text-secondary p-3 rounded-full shadow-lg transform
                        hover:bg-white hover:opacity-50 hover:text-gray hover:scale-110 transition-all duration-200"
-            title="Add to Cart"
+            title="Add to Cart" // from here to ashwanth -> dhanush -> order confirmation
           >
             <ShoppingCart size={18} />
           </button>
           <button
             className="bg-white text-secondary p-3 rounded-full shadow-lg transform
                        hover:bg-white hover:opacity-50  hover:text-gray hover:scale-110 transition-all duration-200"
-            title="Add to Wishlist"
+            title="Add to Wishlist" // from here to ashwanth -> he saves the users wishlist - stores the data in dhanush nd ashwanth integrated DB;
           >
             <Heart size={18} />
           </button>
@@ -55,24 +55,24 @@ const ProductCard = ({ product }) => {
           <p className="text-sm text-gray-500">{product.category}</p>
 
           <div className="flex items-center">
-            {[...Array(5)].map(
+            {[...Array(5)].map( //undefined array ra, we need 5 times running so simply like that;
               (
                 _,
-                i // _ the pointer variable is not necessary , so only index i has been used
+                i, // _ the pointer variable is not necessary , so only index i has been used
               ) => (
-                <svg //Scalable Vector Graphics.
+                <svg //Scalable Vector Graphics. (JIC)
                   key={i}
                   className={`w-4 h-4 ${
                     i < Math.round(product.rating)
-                      ? "text-yellow-400"
-                      : "text-gray-300"
+                      ? 'text-yellow-400'
+                      : 'text-gray-300'
                   }`}
                   fill="currentColor" //currentColor inbuilt css
                   viewBox="0 0 20 20" //co-ordinate the system svg
                 >
                   <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.957a1 1 0 00.95.69h4.162c.969 0 1.371 1.24.588 1.81l-3.366 2.445a1 1 0 00-.364 1.118l1.287 3.957c.3.921-.755 1.688-1.54 1.118l-3.366-2.445a1 1 0 00-1.175 0l-3.366 2.445c-.784.57-1.838-.197-1.539-1.118l1.287-3.957a1 1 0 00-.364-1.118L2.051 9.384c-.783-.57-.38-1.81.588-1.81h4.162a1 1 0 00.95-.69L9.049 2.927z" />
-                </svg> //path can be taken from heroicons or svg repos
-              )
+                </svg> //path can be taken from heroicons or svg repos - taken from svgrepos
+              ),
             )}
           </div>
         </div>
@@ -93,18 +93,18 @@ const ProductCard = ({ product }) => {
             )} */}
           </div>
 
-          {product.stock > 0 ? ( //if
-            product.stock <= 10 ? ( //else if
+          {product.stock > 0 ? ( //if0
+            product.stock <= 10 ? ( //else if1
               <span className="text-sm text-yellow-500">
                 {`only ${product.stock} left` || product.unit}
-              </span> //true
+              </span> //true01
             ) : (
               <span className="text-sm text-gray-500">
-                {product.stock} {product.unit || "in stock"}
-              </span> // false
+                {product.stock} {product.unit || 'in stock'}
+              </span> // false1
             )
           ) : (
-            <span className="text-sm font-bold text-red-500">Out Of Stock</span> //false
+            <span className="text-sm font-bold text-red-500">Out Of Stock</span> //false0
           )}
         </div>
       </div>

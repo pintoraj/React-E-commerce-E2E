@@ -211,8 +211,8 @@ const ShopAllPage = () => {
           </aside>
 
           {/* ===== MAIN CONTENT (PRODUCTS) ===== */}
-          <main className="lg:col-span-3">
-            <div className="flex flex-col md:flex-row justify-between items-center mb-6 gap-4">
+          <main className="xl:lg-col-2 lg:col-span-3">
+            <div className="flex flex-col md:flex-row justify-between items-center mb-6 gap-6">
               <div className="relative w-full md:w-2/3 lg:w-1/2 duration-300 ease-in-out hover:shadow-xl hover:-translate-y-0.5  ">
                 <input
                   type="text"
@@ -246,7 +246,7 @@ const ShopAllPage = () => {
 
             {/* --- Product Grid --- */}
             {paginatedProducts.length > 0 ? (
-              <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6 gap-6">
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-3 gap-6">
                 {paginatedProducts.map((product) => (
                   <ProductCard key={product.id} product={product} />
                 ))}

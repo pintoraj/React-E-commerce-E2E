@@ -1,56 +1,39 @@
 import { useEffect, useState } from "react";
-import { fetchProducts } from "../api/productApi"; // Corrected Path
-import ProductCard from "./ProductCard"; // Corrected Path
+import { fetchProducts } from "../api/productApi";
+import ProductCard from "./ProductCard";
 
-const calculateTimeLeft = (targetDate) => {
-  const difference = +new Date(targetDate) - +new Date();
-  //The + converts them to timestamps (milliseconds since Jan 1, 1970), Subtracting gives the difference in milliseconds.
 
-  let timeLeft = {};
-  {
-    /*  1000 ms = 1 second
-60 seconds = 1 minute
-60 minutes = 1 hour
-24 hours = 1 day
-
-So this converts the milliseconds into:
-
-Days
-Hours (remaining after full days)
-Minutes (remaining after full hours)
-Seconds (remaining after full minutes)*/
-  }
-
-  if (difference > 0) {
-    timeLeft = {
-      days: Math.floor(difference / (1000 * 60 * 60 * 24)), //60 secs * 60 mins * 24 hours
-      hours: Math.floor((difference / (1000 * 60 * 60)) % 24), // 1000 milliseconds * 60 secs * 60 mins % 24 hours
-      minutes: Math.floor((difference / 1000 / 60) % 60), // 1000 milliseconds / 60 secs %  60 secs
-      seconds: Math.floor((difference / 1000) % 60), // 1000 milliseconds  % 60 secs
-    };
-  }
-  return timeLeft;
-};
-
-const DealOfTheDay = () => {
+export default function DealOfTheDay() {
   const [dealProducts, setDealProducts] = useState([]);
-  const [targetDate] = useState(() => {
-    const date = new Date();
-    date.setDate(date.getDate() + 7); // Set target 7 days from now
-    return date;
-  });
-
-  const [timeLeft, setTimeLeft] = useState(() => calculateTimeLeft(targetDate));
-
   useEffect(() => {
     const getDealProducts = async () => {
       const allProducts = await fetchProducts();
-      const deals = allProducts.filter((p) => p.discountPercentage >= 15); // Deals with >= 15% discount
-      setDealProducts(deals); //update the arrray
+      const deals = allProducts.filter((p) => p.discountPercentage >= 10); // Deals with >= 10 % discount
+      setDealProducts(deals);
     };
     getDealProducts();
   }, []);
 
+  const calculateTimeLeft = (targetDate) => {
+    const difference = +new Date(targetDate) - +new Date(); // + converts them to timestamps (milliseconds since Jan 1, 1970), subtracting gives the difference in milliseconds. - kindly remind me to teach you guys how this works. @Gothula nd @Dhanush (should know)
+    let timeLeft = {}; //empty object init
+    if (difference > 0) {
+      timeLeft = { //key:value pair
+        days: Math.floor(difference / (1000 * 60 * 60 * 24)), //(difference  / 60 secs * 60 mins * 24 hours) = we can easily find the days left for the day to reach
+        hours: Math.floor((difference / (1000 * 60 * 60)) % 24), // 1000 milliseconds * 60 secs * 60 mins % 24 hours
+        minutes: Math.floor((difference / 1000 / 60) % 60), // 1000 milliseconds / 60 secs %  60 secs
+        seconds: Math.floor((difference / 1000) % 60), // 1000 milliseconds  % 60 secs
+      };
+    }
+    return timeLeft;
+  }; // planning to use useMemo() , so that it'd rememeber the last timee
+
+  const [targetDate] = useState(() => { //dynamic target date setup
+    const date = new Date();
+    date.setDate(date.getDate() + 7); // Set target 7 days from now - interface Date
+    return date;
+  });
+  const [timeLeft, setTimeLeft] = useState(() => calculateTimeLeft(targetDate));
   useEffect(() => {
     const timer = setInterval(() => {
       setTimeLeft(calculateTimeLeft(targetDate));
@@ -60,7 +43,6 @@ const DealOfTheDay = () => {
 
   return (
     <>
-      {/* Section Header */}
       <div className="flex flex-col md:flex-row justify-between items-center mb-8 gap-6">
         <div className="text-center md:text-left">
           <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
@@ -70,10 +52,8 @@ const DealOfTheDay = () => {
             Don't wait. The time will never be just right.
           </p>
         </div>
-
-        {/* Countdown Timer */}
-        {Object.keys(timeLeft).length > 0 ? (
-          <div className="flex space-x-2 md:space-x-4 text-center">
+        {Object.keys(timeLeft).length > 0 ? ( //Object.keys(objName) - gets all the keys - sourashish idea !! useful enough like hashmap.getKeys()
+          <div className="flex space-x-2 md:space-x-4 text-center"> {/* if true render this */}
             <div>
               <span className="text-2xl md:text-3xl font-bold bg-gray-100 p-3 rounded-lg">
                 {timeLeft.days}
@@ -99,16 +79,12 @@ const DealOfTheDay = () => {
               <p className="text-sm mt-1">Secs</p>
             </div>
           </div>
-        ) : (
-          <div className="text-xl font-bold text-red-500">Deal has ended!</div>
-        )}
+        ) : ( <div className="text-xl font-bold text-red-500">Deal has ended!</div> /* if false render this */ )}
       </div>
-
-      {/* Product Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {dealProducts.slice(0, 4).map(
+      <div className="grid grid-cols-6 xl:grid-cols-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 align-items-center">
+        {dealProducts.slice(0, 6).map(
           (
-            product //slices to only 0,1,2,3
+            product //slices to only 0,1,2,3,4,5 - total 6 products , 16.1 inch looks fine (should check w company laptop)
           ) => (
             <ProductCard key={product.id} product={product} />
           )
@@ -118,4 +94,3 @@ const DealOfTheDay = () => {
   );
 };
 
-export default DealOfTheDay;

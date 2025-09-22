@@ -8,18 +8,15 @@ export default {
   ],
   theme: {
     extend: {
-      // Define a cohesive color palette
-      colors: {
-        primary: '#3B82F6', // Blue
-        secondary: '#1F2937', // Dark Gray
-        accent: '#F59E0B', // Amber/Yellow
-        neutral: '#F3F4F6', // Light Gray
+      colors: { //color palette not fixed commonly, imma go random - also Imma change the project to beige red theme
+        primary: '#3B82F6',
+        secondary: '#1F2937',
+        accent: '#F59E0B',
+        neutral: '#F3F4F6',
       },
-      // Set the default font
       fontFamily: {
         sans: ['Plus Jakarta Sans', 'sans-serif'],
       },
-      // Define custom keyframe animations
       keyframes: {
         heroFadeIn: {
           '0%': { opacity: '0', transform: 'scale(0.95)' },
@@ -30,7 +27,6 @@ export default {
           '50%': { transform: 'translateY(-8px)' },
         },
       },
-      // Make animations available as utility classes
       animation: {
         heroFadeIn: 'heroFadeIn 1.5s ease-out forwards',
         float: 'float 3s ease-in-out infinite',
