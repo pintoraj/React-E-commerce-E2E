@@ -1,22 +1,55 @@
-import localData from "../db.json";
+// import localData from '../../db.json';
 
-// 2. The function now provides the imported data.
-// We keep it as an async function to maintain a consistent API signature,
-// which means you won't have to change any code in the components that call it.
+// Let the port be fixed , I'll switch to fetch with endpoints - till that i'd use async promise to fetchProducts
+// since it's already stored in the db.json as a Products array
 
+// team lead @ashwanth approved - sourashish gave the idea to use async calls so that the code won't look messed up.
+
+// export const fetchProducts = async () => {
+//   try {
+//     if (localData && localData.products) { // if data present , if data.products present? true and true ? returns the data
+//       return localData.products;
+//     } else {
+//       console.error("Error: 'db.json' does not contain a 'products' key.");
+//       return [];
+//     }
+//   } catch (error) {
+//     console.error("Failed to read data from local db.json:", error);
+//     return [];
+//   }
+// };
+
+//use fetch() - shift to fetch() - waiting for the merge of db.json & @Divyagna
+
+{
+  /* const DB_URL = "http://localhost:3000/products";
+
+export const fetchProducts = async()=>{
+  try{
+    const response = await fetch(DB_URL);
+
+    if(!response.ok){
+          console.error(`Error fetching data:${response.status}`)
+    }
+    const products=response.json();
+    return products;
+  }
+  catch(error){
+    console.error("Error fetching details",error);
+    return[];
+  }
+} */
+}
+
+// trying this to explore axios;
+
+import axios from 'axios';
 export const fetchProducts = async () => {
   try {
-    // 3. The data is already loaded. We just need to access it.
-    // We assume your db.json file has a root object with a "products" array.
-    if (localData && localData.products) {
-      return localData.products;
-    } else {
-      // This error will show if your db.json is structured incorrectly.
-      console.error("Error: 'db.json' does not contain a 'products' key.");
-      return []; // Return an empty array to prevent crashes.
-    }
+    const response = await axios.get('http://localhost:3000/produrewqfcsadfa'); // no need of response.json - adv of axios
+    return response.data;
   } catch (error) {
-    console.error("Failed to read data from local db.json:", error);
-    return []; // Return empty array on any other error.
+    console.error('Error fetching data via axios', error);
+    return [];
   }
 };

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 const API_URL = "http://localhost:3000/products";
+// I'VE USED DEFAULT API ENDPOINT 'PORT 3000' - KINDLY RECHECK BEFORE MERGING@Dhanush - you're using 300, 3001 and 3002 while divyagna using 3000
 
 const ProductForm = ({ productToEdit, onFormSubmit }) => {
   const initialFormState = {
@@ -33,12 +34,13 @@ const ProductForm = ({ productToEdit, onFormSubmit }) => {
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     if (file) {
-      const imagePath = `/images/${file.name}`;
+      const imagePath = `/images/${file.name}`; // thinking of shifting to cloudFlare instead of local , should try it- @ashwanth
       setFormData((prevData) => ({ ...prevData, thumbnail: imagePath }));
+
     }
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e) => { // a promise has been made that it'll post / put the data
     e.preventDefault();
 
     if (!formData.thumbnail && !isEditMode) {
@@ -47,36 +49,26 @@ const ProductForm = ({ productToEdit, onFormSubmit }) => {
     }
 
     const method = isEditMode ? "PUT" : "POST";
-    const url = isEditMode ? `${API_URL}/${productToEdit.id}` : API_URL;
+    const url = isEditMode ? `${API_URL}/${productToEdit.id}` : API_URL; //    if edit - /products/:id : if add /products
 
     try {
-      let productData = { ...formData };
-
-      // --- NEW LOGIC TO CREATE A SEQUENTIAL ID ---
+      let productData = { ...formData }; //spread operator used to copy the form data to product data
       if (!isEditMode) {
-        // 1. Fetch all existing products to find out the highest current ID
         const response = await fetch(API_URL);
         if (!response.ok)
           throw new Error("Failed to fetch products to determine new ID.");
         const products = await response.json();
-
-        // 2. Find the maximum ID from the existing products
-        // This is more robust than just using products.length in case items have been deleted.
-        const maxId = products.reduce(
+        const maxId = products.reduce( //to find the maxID , so that no duplicates would be created leading to conflict - common for me nd divyagna
           (max, product) => (product.id > max ? product.id : max),
           0
         );
-
-        // 3. Add the new sequential ID to our product data
         productData.id = maxId + 1;
       }
-      // --- END OF NEW LOGIC ---
 
-      const response = await fetch(url, {
-        method: method,
-        headers: { "Content-Type": "application/json" },
-        // Send the productData object which now includes the ID for new products
-        body: JSON.stringify(productData),
+      const response = await fetch(url, { // using fetch a promise has been made that'll bring a response object
+        method: method, // can be post / put
+        headers: { "Content-Type": "application/json" }, // passing
+        body: JSON.stringify(productData), //putting / posting
       });
 
       if (!response.ok) throw new Error("Failed to submit product data");

@@ -5,9 +5,7 @@ const API_URL = "http://localhost:3000/products";
 
 const AdminPage = () => {
   const [products, setProducts] = useState([]);
-  const [editingProduct, setEditingProduct] = useState(null); // State to hold the product being edited
 
-  // Fetch all products from the backend
   const fetchProducts = async () => {
     try {
       const response = await fetch(API_URL);
@@ -18,32 +16,28 @@ const AdminPage = () => {
     }
   };
 
-  // Fetch products on initial component load
   useEffect(() => {
     fetchProducts();
   }, []);
 
-  // Handle deleting a product
   const handleDelete = async (productId) => {
     if (!window.confirm("Are you sure you want to delete this product?")) {
       return;
     }
     try {
       await fetch(`${API_URL}/${productId}`, { method: "DELETE" });
-      // Refresh the product list after deleting
       fetchProducts();
     } catch (error) {
       console.error("Failed to delete product:", error);
     }
   };
 
-  // This function is called by ProductForm after a successful submission
+  const [editingProduct, setEditingProduct] = useState(null);
   const handleFormSuccess = (isCancel = false) => {
     if (isCancel) {
       setEditingProduct(null);
       return;
     }
-    // Clear the editing state and refresh the product list
     setEditingProduct(null);
     fetchProducts();
   };
@@ -51,16 +45,12 @@ const AdminPage = () => {
   return (
     <div className="container mx-auto p-8">
       <h1 className="text-4xl font-extrabold mb-8">Product Management</h1>
-
-      {/* The form will be in "Edit Mode" if editingProduct is not null */}
       <div className="mb-12">
         <ProductForm
           productToEdit={editingProduct}
           onFormSubmit={handleFormSuccess}
         />
       </div>
-
-      {/* List of existing products */}
       <div className="space-y-4">
         <h2 className="text-2xl font-bold">Existing Products</h2>
         {products.map((product) => (

@@ -81,10 +81,10 @@ export default function DealOfTheDay() {
           </div>
         ) : ( <div className="text-xl font-bold text-red-500">Deal has ended!</div> /* if false render this */ )}
       </div>
-      <div className="grid grid-cols-6 xl:grid-cols-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 align-items-center">
-        {dealProducts.slice(0, 6).map(
+      <div className="grid grid-cols-6 xl:grid-cols-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 align-items-center">
+        {dealProducts.slice(0, 4).map(
           (
-            product //slices to only 0,1,2,3,4,5 - total 6 products , 16.1 inch looks fine (should check w company laptop)
+            product //slices to only 0,1,2,3- total 4 products , 16.1 inch looks fine (should check w company laptop)
           ) => (
             <ProductCard key={product.id} product={product} />
           )
