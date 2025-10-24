@@ -58,7 +58,7 @@ const ProductCard = ({ product }) => {
     const updatedWishlist = [...(user.wishlist || []), product];
     addToWishlist(product);
 
-    await fetch(`/users/${user.id}`, {
+    await fetch(`//${user.id}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ wishlist: updatedWishlist }),
@@ -78,11 +78,11 @@ const ProductCard = ({ product }) => {
         <div className="p-image-container">
           <img
             src={
-              isHovered && product.images?.[0]
-                ? product.images[0]
-                : product.thumbnail
+              isHovered && product.productThumbnail?.[0]
+                ? `/${product.productThumbnail}`
+                : product.productThumbnail
             }
-            alt={product.title}
+            alt={product.productName}
             className="p-product-image"
           />
           <div className="p-image-overlay" />
@@ -108,12 +108,12 @@ const ProductCard = ({ product }) => {
 
         <div className="p-product-info">
           <div className="p-product-meta">
-            <p className="p-category">{product.category}</p>
+            <p className="p-category">{product.categoryName}</p>
             <div className="p-rating">
               {[...Array(5)].map((_, i) => (
                 <svg
                   key={i}
-                  className={`p-star ${i < Math.round(product.rating) ? "filled" : ""}`}
+                  className={`p-star ${i < Math.round(product.productRating) ? "filled" : ""}`}
                   fill="currentColor"
                   viewBox="0 0 20 20"
                 >
@@ -123,15 +123,15 @@ const ProductCard = ({ product }) => {
             </div>
           </div>
 
-          <h3 className="p-title">{product.title}</h3>
+          <h3 className="p-title">{product.productName}</h3>
 
           <div className="p-price-stock">
-            <span className="p-price">₹{product.price}</span>
-            {product.stock > 0 ? (
-              product.stock <= 10 ? (
-                <span className="p-stock-warning">only {product.stock} left</span>
+            <span className="p-price">₹{product.productPrice}</span>
+            {product.productStock > 0 ? (
+              product.productStock <= 10 ? (
+                <span className="p-stock-warning">only {product.productStock} left</span>
               ) : (
-                <span className="p-stock">{product.stock} {product.unit || "in stock"}</span>
+                <span className="p-stock">{product.productStock} in stock</span>
               )
             ) : (
               <span className="p-out-of-stock">Out Of Stock</span>

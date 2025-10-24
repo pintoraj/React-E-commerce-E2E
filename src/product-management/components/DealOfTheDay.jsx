@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { fetchProducts } from "../api/productApi";
 import ProductCard from "./ProductCard";
 import "./DealOfTheDay.css";
+import axios from "axios";
 
 const calculateTimeLeft = (targetDate) => {
   const difference = +new Date(targetDate) - +new Date();
@@ -27,9 +27,16 @@ const DealOfTheDay = () => {
 
   useEffect(() => {
     const getDealProducts = async () => {
-      const allProducts = await fetchProducts();
-      const deals = allProducts.filter((p) => p.discountPercentage >= 15);
-      setDealProducts(deals);
+      try{
+        console.log("Trying to fetch deal products...");
+        const dealProductsData = await axios.get("http://localhost:8080/products/deals")
+        console.log("Deal Products Data:",dealProductsData.data);
+        setDealProducts(dealProductsData.data);
+      }
+      catch(error){
+        console.log('Error fetching deal of the day products', error);
+        return[];
+      }
     };
     getDealProducts();
   }, []);
@@ -76,8 +83,8 @@ const DealOfTheDay = () => {
       </div>
 
       <div className="p-deal-grid">
-        {dealProducts.slice(0, 4).map((product) => (
-          <ProductCard key={product.id} product={product} />
+        {dealProducts.map((product) => (
+          <ProductCard key={product.productId} product={product} />
         ))}
       </div>
     </div>

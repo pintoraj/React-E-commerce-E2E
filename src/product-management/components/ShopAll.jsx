@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useMemo } from "react";
-import { fetchProducts } from "../api/productApi";
 import ProductCard from "../components/ProductCard";
 import { Search, ChevronDown, Star, X } from "lucide-react";
 import "./ShopAllPage.css";
+import axios from "axios";
 
 const PRODUCTS_PER_PAGE = 9;
 
@@ -19,61 +19,65 @@ const ShopAllPage = () => {
 
   useEffect(() => {
     const loadProducts = async () => {
-      const products = await fetchProducts();
-      setAllProducts(products);
+      const products = await axios.get("http://localhost:8080/products");
+      setAllProducts(products.data);
     };
     loadProducts();
   }, []);
 
   const availableBrands = useMemo(() => {
-    const brands = allProducts.map((p) => p.brand);
+    const brands = allProducts.map((p) => p.productBrand);
     return [...new Set(brands)].sort();
   }, [allProducts]);
 
   const availableCategories = useMemo(() => {
-    const categories = allProducts.map((p) => p.category);
+    const categories = allProducts.map((p) => p.categoryName);
     return [...new Set(categories)].sort();
   }, [allProducts]);
 
   useEffect(() => {
     let filtered = [...allProducts];
 
+
+
     if (searchTerm) {
       filtered = filtered.filter((p) =>
-        p.title.toLowerCase().includes(searchTerm.toLowerCase())
+        p.productName.toLowerCase().includes(searchTerm.toLowerCase())
       );
     }
 
+
+
     if (selectedBrands.length > 0) {
-      filtered = filtered.filter((p) => selectedBrands.includes(p.brand));
+      filtered = filtered.filter((p) => selectedBrands.includes(p.productBrand));
     }
 
     if (selectedCategories.length > 0) {
       filtered = filtered.filter((p) =>
-        selectedCategories.includes(p.category)
+        selectedCategories.includes(p.categoryName)
       );
     }
 
     if (priceRange.min !== "") {
-      filtered = filtered.filter((p) => p.price >= parseFloat(priceRange.min));
+      filtered = filtered.filter((p) => p.productPrice >= parseFloat(priceRange.min));
     }
     if (priceRange.max !== "") {
-      filtered = filtered.filter((p) => p.price <= parseFloat(priceRange.max));
+      filtered = filtered.filter((p) => p.productPrice <= parseFloat(priceRange.max));
     }
 
     if (minRating > 0) {
-      filtered = filtered.filter((p) => p.rating >= minRating);
+      filtered = filtered.filter((p) => p.productRating >= minRating);
     }
 
     switch (sortBy) {
       case "price-asc":
-        filtered.sort((a, b) => a.price - b.price);
+        filtered.sort((a, b) => a.productPrice - b.productPrice);
         break;
       case "price-desc":
-        filtered.sort((a, b) => b.price - a.price);
+        filtered.sort((a, b) => b.productPrice - a.productPrice);
         break;
       case "rating":
-        filtered.sort((a, b) => b.rating - a.rating);
+        filtered.sort((a, b) => b.productRating - a.productRating);
         break;
       default:
         break;
@@ -225,7 +229,7 @@ const ShopAllPage = () => {
             {paginatedProducts.length > 0 ? (
               <div className="p-product-grid">
                 {paginatedProducts.map((product) => (
-                  <ProductCard key={product.id} product={product} />
+                  <ProductCard key={product.productId} product={product} />
                 ))}
               </div>
             ) : (

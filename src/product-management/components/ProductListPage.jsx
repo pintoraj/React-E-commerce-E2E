@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { fetchProducts } from "../api/productApi";
 import ProductCard from "../components/ProductCard";
 import "./ProductListPage.css";
+import axios from "axios";
 
 const PRODUCTS_PER_PAGE = 8;
 
@@ -14,13 +15,26 @@ const ProductListPage = () => {
 
   useEffect(() => {
     const getProducts = async () => {
-      const allProducts = await fetchProducts();
-      setProducts(allProducts);
-      const uniqueCategories = [
+      try{
+        console.log("Fetching data...")
+        const allProducts = await axios.get("http://localhost:8080/products");
+        const allCategories= await axios.get("http://localhost:8080/categories")
+        setProducts(allProducts.data);
+        setCategories(allCategories.data);
+        console.log(allProducts.data);
+        console.log(allCategories.data);
+
+      }
+      catch (error){
+        console.log("Error fetching the product list", error);
+      }
+
+        const uniqueCategories = [
         "All",
-        ...new Set(allProducts.map((p) => p.category)),
+        ...new Set(categories.map((p) => p.categoryName)),
       ];
       setCategories(uniqueCategories);
+
     };
     getProducts();
   }, []);
@@ -52,13 +66,13 @@ const ProductListPage = () => {
         <div className="p-category-filters">
           {categories.map((category) => (
             <button
-              key={category}
+              key={category.categoryId}
               onClick={() => setSelectedCategory(category)}
               className={`p-category-button ${
                 selectedCategory === category ? "active" : ""
               }`}
             >
-              {category.toUpperCase()}
+              {category.categoryName}
             </button>
           ))}
         </div>
@@ -66,7 +80,7 @@ const ProductListPage = () => {
 
       <div className="p-product-grid">
         {currentProducts.map((product) => (
-          <ProductCard key={product.id} product={product} />
+          <ProductCard key={product.productId} product={product} />
         ))}
       </div>
 
