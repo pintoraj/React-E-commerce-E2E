@@ -1,0 +1,252 @@
+.u-profile-page {
+  padding: 20px 0 48px;
+}
+
+.u-profile-card {
+  width: 100%;
+  max-width: 920px;
+  margin: 28px auto;
+  background: #fff;
+  border-radius: 12px;
+  padding: 28px;
+  box-shadow: 0 8px 30px rgba(16, 24, 40, 0.06);
+}
+
+.u-profile-title {
+  margin: 0 0 6px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #23262f;
+}
+
+.u-profile-sub {
+  margin: 0 0 18px;
+  color: var(--muted);
+}
+
+.u-profile-form {
+  display: block;
+  gap: 14px;
+}
+
+.u-row {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 12px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.u-field {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 200px;
+  margin-bottom: 1rem;
+}
+
+.u-field-full {
+  flex: 1 1 100%;
+}
+
+.u-field label {
+  font-weight: 600;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.u-field input,
+.u-field select {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #eee;
+  background: #fafafa;
+  width: 100%;
+  font-size: 1rem;
+}
+
+.u-field input:focus,
+.u-field select:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+/* Section titles */
+.u-section-title {
+  margin: 2rem 0 1rem;
+  color: #333;
+  font-size: 1.5rem;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 0.5rem;
+}
+
+/* Address and payment cards */
+.u-address-card,
+.u-payment-method-card {
+  background: #f9f9f9;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.u-address-title,
+.u-payment-method-title {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: #333;
+  font-size: 1.1rem;
+  text-transform: capitalize;
+}
+
+/* Payment specific */
+.u-payment-row {
+  align-items: flex-end;
+}
+
+.u-card-type-field {
+  min-width: 200px;
+}
+
+.u-card-type-select {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.u-card-type-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 24px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.u-card-icon {
+  display: block;
+}
+
+.u-card-icon.visa,
+.u-card-icon.mc,
+.u-card-icon.amex,
+.u-card-icon.rupay {
+  transform: scale(1);
+}
+
+/* Small note */
+.u-small-note {
+  font-size: 0.75rem;
+  color: #6c757d;
+  margin-top: 0.25rem;
+}
+
+/* Error messages */
+.u-field-err {
+  color: #dc3545;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  font-weight: 700;
+}
+
+/* Actions */
+.u-actions {
+  display: flex;
+  gap: 1rem;
+  margin: 1.5rem 0;
+  flex-wrap: wrap;
+}
+
+.u-btn {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.u-btn.u-primary {
+  background-color: #007bff;
+  color: white;
+}
+
+.u-btn.u-primary:hover {
+  background-color: #0056b3;
+}
+
+.u-btn.u-secondary {
+  background-color: #6c757d;
+  color: white;
+}
+
+.u-btn.u-secondary:hover {
+  background-color: #5a6268;
+}
+
+/* Loading state */
+.u-profile-card.u-loading,
+.u-loading {
+  text-align: center;
+  padding: 2rem;
+  color: #6c757d;
+}
+
+/* Notification */
+.u-notification {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  padding: 1rem;
+  border-radius: 4px;
+  color: white;
+  z-index: 1000;
+  animation: u-slideIn 0.3s ease-out;
+}
+
+@keyframes u-slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.u-notification.success {
+  background-color: #28a745;
+}
+
+.u-notification.error {
+  background-color: #dc3545;
+}
+
+.u-notification.info {
+  background-color: #17a2b8;
+}
+
+/* Responsive */
+@media (max-width: 880px) {
+  .u-row {
+    flex-direction: column;
+  }
+
+  .u-payment-row .u-field {
+    min-width: auto;
+  }
+
+  .u-actions {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .u-btn {
+    width: 100%;
+  }
+}

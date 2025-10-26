@@ -1,0 +1,137 @@
+/* ===== Container ===== */
+.o-payment-container {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: #f5f6fa;
+  box-shadow: inset 0 0 20px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+  color: #222;
+  overflow-y: auto;
+  gap: 20px;
+}
+
+/* ===== Top bar ===== */
+.o-payment-top-row {
+  display: flex;
+  align-items: center;
+  position: relative;
+  min-height: 44px;
+}
+
+.o-top-left,
+.o-top-right {
+  flex: 1 1 0;
+  display: flex;
+  align-items: center;
+}
+
+.o-top-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.o-main-heading {
+  margin: 0;
+  font-size: 26px;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+/* Back button */
+.o-back-checkout-btn {
+  background: transparent;
+  border: none;
+  color: #5f6af2;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  padding: 0;
+}
+.o-back-checkout-btn:hover {
+  opacity: 0.7;
+}
+
+/* ===== Main layout ===== */
+.o-payment-main {
+  display: flex;
+  gap: 24px;
+}
+
+.o-payment-left,
+.o-payment-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  animation: o-fadeIn 0.4s ease-in-out;
+}
+
+.o-payment-left {
+  max-width: 45%;
+}
+.o-payment-right {
+  max-width: 45%;
+  position: relative;
+}
+
+/* ===== Animations ===== */
+@keyframes o-fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.o-back-checkout-btn:focus,
+.o-change-date-btn:focus,
+.o-proceed-btn:focus,
+.o-payment-actions button:focus,
+.o-method-block:focus-within {
+  outline: 2px solid #5f6af2;
+  outline-offset: 2px;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 900px) {
+  .o-payment-container {
+    padding: 16px;
+  }
+  .o-payment-main {
+    flex-direction: column;
+  }
+  .o-payment-left,
+  .o-payment-right {
+    max-width: 100%;
+  }
+  .o-main-heading {
+    font-size: 22px;
+  }
+  .o-top-center {
+    position: static;
+    transform: none;
+    margin: 8px 0 0 0;
+  }
+  .o-payment-top-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+}
+
+/* Highlight selected payment method block */
+.o-method-block.o-selected {
+  background: rgba(95, 106, 242, 0.08);
+  border: 1px solid #5f6af2;
+  border-radius: 8px;
+  padding: 6px;
+}
+
+/* Verified UPI display */
+.o-verified-upi {
+  font-size: 13px;
+  color: #333;
+  margin-top: 6px;
+}

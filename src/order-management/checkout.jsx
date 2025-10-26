@@ -1,0 +1,256 @@
+import React, { useEffect, useState, useRef } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import "./checkout.css";
+import AddressList from "./AddressList";
+import OrderSummary from "./OrderSummary";
+import { toast } from "react-hot-toast";
+
+export default function Checkout() {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const rightColRef = useRef(null);
+
+  const cartItems = location.state?.cartItems || [];
+  const userId = location.state?.userId;
+
+  const [addresses, setAddresses] = useState([]);
+  const [selectedAddressId, setSelectedAddressId] = useState(null);
+  const [showAdd, setShowAdd] = useState(false);
+  const [newAddr, setNewAddr] = useState({
+    name: "",
+    phone: "",
+    line: "",
+    city: "",
+    pincode: "",
+  });
+
+  const [availableDates, setAvailableDates] = useState([]);
+  const [selectedDate, setSelectedDate] = useState("");
+  const [showDateDropdown, setShowDateDropdown] = useState(false);
+
+  const API_BASE = "http://localhost:3001";
+
+  useEffect(() => {
+    if (!userId || cartItems.length === 0) {
+      toast.error("Checkout requires items in cart and a valid user.");
+      navigate("/cart");
+    }
+  }, [userId, cartItems, navigate]);
+
+  useEffect(() => {
+    fetchUser();
+  }, []);
+
+  async function fetchUser() {
+    try {
+      const res = await fetch(`${API_BASE}/users/${userId}`);
+      if (!res.ok) return;
+      const data = await res.json();
+      setAddresses(Array.isArray(data.addresses) ? data.addresses : []);
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
+  useEffect(() => {
+    if (selectedAddressId) {
+      const today = new Date();
+      const dates = [];
+      for (let i = 2; i <= 4; i++) {
+        const d = new Date(today);
+        d.setDate(today.getDate() + i);
+        dates.push({
+          value: d.toISOString().split("T")[0],
+          label: d.toLocaleDateString("en-GB", {
+            day: "2-digit",
+            month: "long",
+            year: "numeric"
+          })
+        });
+      }
+      setAvailableDates(dates);
+      setSelectedDate(dates[0]?.value || "");
+      rightColRef.current?.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [selectedAddressId]);
+
+  function calcSubtotal() {
+    return cartItems.reduce(
+      (s, it) => s + (it.price || 0) * (it.qty || 1),
+      0
+    );
+  }
+
+  async function handleAddAddress(e) {
+    e.preventDefault();
+
+    const nameRegex = /^[A-Za-z\s]+$/;
+    const phoneRegex = /^[0-9]{10}$/;
+    const pincodeRegex = /^[0-9]{6}$/;
+
+    if (!nameRegex.test(newAddr.name)) {
+      alert("Name should contain only alphabets and spaces.");
+      return;
+    }
+    if (!phoneRegex.test(newAddr.phone)) {
+      alert("Phone number should be exactly 10 digits.");
+      return;
+    }
+    if (!pincodeRegex.test(newAddr.pincode)) {
+      alert("Pincode should be exactly 6 digits.");
+      return;
+    }
+
+    const addr = {
+      id: Date.now(),
+      name: newAddr.name,
+      phone: newAddr.phone,
+      line: newAddr.line,
+      city: newAddr.city,
+      pincode: newAddr.pincode
+    };
+
+    const updatedAddresses = [...addresses, addr];
+
+    try {
+      await fetch(`${API_BASE}/users/${userId}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ addresses: updatedAddresses }),
+      });
+      setNewAddr({ name: "", phone: "", line: "", city: "", pincode: "" });
+      setShowAdd(false);
+      setSelectedAddressId(addr.id);
+      fetchUser();
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+  function handleProceed() {
+    const selected = addresses.find((a) => a.id === selectedAddressId) || null;
+
+    const subtotal = calcSubtotal();
+    const shipping = cartItems.length > 0 ? 3.99 : 0;
+    const tax = cartItems.length > 0 ? 2.0 : 0;
+    const total = subtotal + shipping + tax;
+
+    const payload = {
+      userId,
+      items: cartItems,
+      subtotal,
+      shipping,
+      tax,
+      total,
+      address: selected,
+      deliveryDate: selectedDate
+    };
+
+    navigate("/payment", { state: { orderData: payload } });
+  }
+
+  useEffect(() => {
+    if (showAdd) {
+      const firstInput = document.querySelector(".o-modal-card input");
+      firstInput?.focus();
+      const handleEsc = (e) => e.key === "Escape" && setShowAdd(false);
+      window.addEventListener("keydown", handleEsc);
+      return () => window.removeEventListener("keydown", handleEsc);
+    }
+  }, [showAdd]);
+
+  const visibleAddresses = addresses.slice(0, 2);
+  const extraAddresses = addresses.slice(2);
+
+    return (
+    <div className="o-checkout-container">
+      <div className="o-checkout-top-row">
+        <div className="o-top-right"></div>
+      </div>
+
+      <div className="o-checkout-main">
+        <div className="o-checkout-left">
+          <AddressList
+            addresses={visibleAddresses}
+            extraAddresses={extraAddresses}
+            selectedAddressId={selectedAddressId}
+            setSelectedAddressId={setSelectedAddressId}
+            onAdd={() => setShowAdd(true)}
+          />
+        </div>
+
+        <div className="o-checkout-right" ref={rightColRef}>
+          <OrderSummary
+            addresses={addresses}
+            selectedAddressId={selectedAddressId}
+            availableDates={availableDates}
+            selectedDate={selectedDate}
+            setSelectedDate={setSelectedDate}
+            showDateDropdown={showDateDropdown}
+            setShowDateDropdown={setShowDateDropdown}
+            cartItems={cartItems}
+            calcTotal={calcSubtotal}
+            onProceed={handleProceed}
+          />
+        </div>
+      </div>
+
+      {showAdd && (
+        <div className="o-modal">
+          <form className="o-modal-card" onSubmit={handleAddAddress}>
+            <h4>Add Address</h4>
+
+            <input
+              required
+              placeholder="Name"
+              value={newAddr.name}
+              onChange={(e) => setNewAddr({ ...newAddr, name: e.target.value })}
+              pattern="^[A-Za-z\s]+$"
+              title="Name should contain only alphabets and spaces"
+            />
+
+            <input
+              required
+              placeholder="Phone"
+              value={newAddr.phone}
+              onChange={(e) => setNewAddr({ ...newAddr, phone: e.target.value })}
+              pattern="^[0-9]{10}$"
+              title="Phone number should be exactly 10 digits"
+            />
+
+            <input
+              required
+              placeholder="Address line"
+              value={newAddr.line}
+              onChange={(e) => setNewAddr({ ...newAddr, line: e.target.value })}
+            />
+
+            <input
+              required
+              placeholder="City"
+              value={newAddr.city}
+              onChange={(e) => setNewAddr({ ...newAddr, city: e.target.value })}
+              pattern="^[A-Za-z\s]+$"
+              title="City should contain only alphabets and spaces"
+            />
+
+            <input
+              required
+              placeholder="Pincode"
+              value={newAddr.pincode}
+              onChange={(e) => setNewAddr({ ...newAddr, pincode: e.target.value })}
+              pattern="^[0-9]{6}$"
+              title="Pincode should be exactly 6 digits"
+            />
+
+            <div className="o-modal-actions">
+              <button type="button" onClick={() => setShowAdd(false)}>Cancel</button>
+              <button type="submit">Save</button>
+            </div>
+          </form>
+        </div>
+      )}
+    </div>
+  );
+
+}

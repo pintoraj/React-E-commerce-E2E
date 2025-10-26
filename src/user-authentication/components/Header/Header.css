@@ -1,0 +1,250 @@
+.u-site-header {
+  height: 72px;
+  background: #fff;
+  box-shadow: 0 1px 0 rgba(16, 24, 40, 0.04);
+  position: sticky;
+  top: 0;
+  z-index: 110;
+}
+
+.u-header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+  gap: 16px;
+}
+
+/* Left */
+.u-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #1a1a1a;
+  font-weight: 700;
+  font-size: 18px;
+  text-decoration: none;
+}
+
+.u-logo-icon {
+  border-radius: 6px;
+  transition: transform 0.25s ease;
+}
+
+.u-logo:hover .u-logo-icon {
+  transform: rotate(-8deg) scale(1.05);
+}
+
+/* Center nav */
+.u-center-nav {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+}
+
+.u-nav-link {
+  color: #374151;
+  text-decoration: none;
+  font-weight: 700;
+  padding: 8px 10px;
+  border-radius: 8px;
+  transition: background 0.12s ease, transform 0.12s ease;
+}
+
+.u-nav-link:hover {
+  background: rgba(94, 102, 231, 0.06);
+  transform: translateY(-2px);
+}
+
+/* Right */
+.u-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Icon button with label */
+.u-icon-btn {
+  background: transparent;
+  border: 0;
+  padding: 8px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.u-icon-btn:hover {
+  background: rgba(16, 24, 40, 0.04);
+}
+
+.u-icon-label {
+  font-weight: 700;
+  color: #374151;
+  font-size: 13px;
+}
+
+/* Account */
+.u-account-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.u-account {
+  position: relative;
+  display: inline-block;
+}
+
+.u-account-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: 0;
+  padding: 8px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.u-account-button:focus {
+  box-shadow: 0 2px 8px rgba(94, 102, 231, 0.15);
+}
+
+.u-account-name {
+  font-weight: 600;
+  color: #374151;
+}
+
+.u-chev {
+  opacity: 0.9;
+  transition: transform 0.18s ease;
+}
+
+.u-chev.u-open {
+  transform: rotate(180deg);
+}
+
+/* Dropdown */
+.u-dropdown {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 10px);
+  background: #fcfcff;
+  border-radius: 10px;
+  padding: 8px;
+  min-width: 200px;
+  box-shadow: 0 8px 24px rgba(16, 24, 40, 0.12);
+  opacity: 0;
+  transform: translateY(-6px) scale(0.98);
+  visibility: hidden;
+  transition: all 180ms cubic-bezier(0.2, 0.9, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  pointer-events: none;
+}
+
+.u-dropdown.u-show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.u-drop-link {
+  padding: 10px 12px;
+  border-radius: 8px;
+  color: #666;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.u-drop-link:hover {
+  background: linear-gradient(90deg, #f7f8ff, #f5f3ff);
+  color: #1a1a1a;
+}
+
+/* Logout button */
+.u-btn-logout {
+  background: transparent;
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(16, 24, 40, 0.06);
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.u-btn-logout:hover {
+  background: rgba(16, 24, 40, 0.04);
+}
+
+/* Responsive */
+@media (max-width: 880px) {
+  .u-center-nav {
+    display: none;
+  }
+
+  .u-brand {
+    display: none;
+  }
+
+  .u-account-button {
+    padding: 8px;
+  }
+
+  .u-icon-label {
+    display: none;
+  }
+}
+
+/* Hide chevron when account acts as direct profile link */
+.u-account-button.u-direct .u-chev {
+  display: none;
+}
+
+/* Auth pages header styling */
+.u-auth-heading {
+  font-size: 18px;
+  font-weight: 700;
+  color: #374151;
+  text-align: center;
+}
+
+.u-auth-links .u-nav-link {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+/* Minimal header */
+.u-minimal-heading {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #4f46e5;
+  margin: auto;
+  padding-top: 0.5rem;
+}
+
+.u-top-right-return {
+  position: absolute;
+  top: 16px;
+  right: 24px;
+  z-index: 120;
+}
+
+.u-return-btn {
+  background: none;
+  border: none;
+  font-size: 0.95rem;
+  color: #4f46e5;
+  cursor: pointer;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: background 0.2s ease;
+}
+
+.u-return-btn:hover {
+  background-color: #eef2ff;
+}

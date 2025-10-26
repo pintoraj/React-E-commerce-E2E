@@ -1,0 +1,77 @@
+.p-loader-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100px;
+  width: 100px;
+  margin: auto;
+}
+
+.p-newtons-cradle {
+  --p-size: 50px;
+  --p-speed: 1.2s;
+  --p-color: #474554;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--p-size);
+  height: var(--p-size);
+}
+
+.p-dot {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 25%;
+  transform-origin: center top;
+}
+
+.p-dot::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 25%;
+  border-radius: 50%;
+  background-color: var(--p-color);
+}
+
+/* Animation */
+.p-dot:first-child {
+  animation: p-swing var(--p-speed) linear infinite;
+}
+
+.p-dot:last-child {
+  animation: p-swing2 var(--p-speed) linear infinite;
+}
+
+@keyframes p-swing {
+  0% {
+    transform: rotate(0deg);
+    animation-timing-function: ease-out;
+  }
+  25% {
+    transform: rotate(70deg);
+    animation-timing-function: ease-in;
+  }
+  50% {
+    transform: rotate(0deg);
+    animation-timing-function: linear;
+  }
+}
+
+@keyframes p-swing2 {
+  0% {
+    transform: rotate(0deg);
+    animation-timing-function: linear;
+  }
+  50% {
+    transform: rotate(0deg);
+    animation-timing-function: ease-out;
+  }
+  75% {
+    transform: rotate(-70deg);
+    animation-timing-function: ease-in;
+  }
+}

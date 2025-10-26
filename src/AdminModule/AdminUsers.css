@@ -1,0 +1,206 @@
+/* Global Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Layout */
+.a-admin-user-wrapper {
+  display: flex;
+  height: 100vh;
+  background-color: #f4f6f8;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.a-user-main {
+  flex: 1;
+  padding: 30px 40px;
+  overflow-y: auto;
+}
+
+/* Header */
+.a-user-header h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Controls */
+.a-user-search {
+  flex: 1;
+  max-width: 500px;
+  padding: 10px;
+  font-size: 1rem;
+  border: 2px solid #1e90ff;
+  border-radius: 30px;
+  outline: none;
+  background-color: #fff;
+  margin: 10px;
+}
+
+.a-user-search:focus {
+  border-color: #0077cc;
+  box-shadow: 0 0 6px rgba(0, 119, 204, 0.3);
+}
+
+.a-user-sort {
+  margin: 10px;
+  max-width: 200px;
+  padding: 10px;
+  font-size: 1rem;
+  border: 2px solid #1e90ff;
+  border-radius: 20px;
+  background-color: #fff;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.a-user-sort option[value=""] {
+  color: #999;
+}
+
+.a-user-add-btn {
+  padding: 8px 16px;
+  background-color: #0078d4;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.a-user-add-btn:hover {
+  background-color: #005fa3;
+}
+
+/* Table */
+.a-user-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.05);
+}
+
+.a-user-table th,
+.a-user-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #eee;
+  text-align: left;
+}
+
+.a-user-table th {
+  background-color: #f0f2f5;
+  font-weight: 600;
+  color: #555;
+}
+
+.a-user-table tr:hover {
+  background-color: #f9f9f9;
+  cursor: pointer;
+}
+
+.a-remove-btn {
+  padding: 6px 12px;
+  background-color: #d9534f;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.a-remove-btn:hover {
+  background-color: #c9302c;
+}
+
+/* Pagination */
+.a-pagination {
+  margin-top: 20px;
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+}
+
+.a-page-btn {
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  background-color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.a-page-btn.a-active {
+  background-color: #0078d4;
+  color: white;
+  border-color: #0078d4;
+}
+
+.a-page-btn.a-arrow {
+  font-weight: bold;
+}
+
+/* Modal */
+.a-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.a-modal-content {
+  background-color: white;
+  padding: 30px;
+  border-radius: 8px;
+  width: 400px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.a-modal-content h3 {
+  margin-bottom: 20px;
+  font-size: 20px;
+  color: #333;
+}
+
+.a-user-form input {
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.a-modal-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.a-modal-actions button {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.a-modal-actions button[type="submit"] {
+  background-color: #0078d4;
+  color: white;
+}
+
+.a-modal-actions button[type="button"]:first-of-type {
+  background-color: #d9534f;
+  color: white;
+}
+
+.a-modal-actions button[type="button"]:last-of-type {
+  background-color: #ccc;
+}

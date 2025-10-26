@@ -1,0 +1,399 @@
+.a-admin-dashboard {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  background-color: #f5f6fa;
+}
+
+.a-sidebar {
+  width: 240px;
+  min-width: 200px;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  left: 0;
+  background: #fff;
+  box-shadow: 2px 0 8px rgba(0,0,0,0.04);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+}
+
+.a-dashboard-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  background-color: #f5f6fa;
+  min-width: 0;
+  height: 100vh;
+}
+
+.a-charts-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2vw;
+  padding: 2vw;
+}
+
+.a-chart-box {
+  background-color: white;
+  flex: 1 1 320px;
+  min-width: 280px;
+  height: 350px;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.a-metrics-container {
+  padding: 2vw;
+}
+
+.a-metrics-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 0.7rem;
+  color: #2f3542;
+}
+
+.a-metrics-title div {
+  font-size: 1rem;
+  font-weight: 400;
+  color: #57606f;
+  margin-left: 0.7rem;
+}
+
+.a-summary-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2vw;
+}
+
+.a-summary-card {
+  padding: 1.5vw;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  flex: 1 1 200px;
+  min-width: 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.a-summary-card1 { background-color: rgb(250, 224, 140); }
+.a-summary-card2 { background-color: rgb(140, 250, 202); }
+.a-summary-card3 { background-color: rgb(171, 235, 247); }
+.a-summary-card4 { background-color: rgb(250, 178, 202); }
+.a-summary-card5 { background-color: rgb(228, 232, 92); }
+
+.a-metric-value {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #0c0e10;
+}
+
+.a-metric-label {
+  font-size: 1rem;
+  color: #181b20;
+  margin-top: 0.3rem;
+}
+
+.a-metric-change {
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  font-weight: 500;
+}
+
+.a-metric-change.positive { color: #2ed573; }
+.a-metric-change.negative { color: #ff4757; }
+
+.a-product-stock-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2vw;
+  padding: 2vw;
+}
+
+.a-table-section {
+  flex: 1 1 320px;
+  background-color: white;
+  padding: 1.5vw;
+  border-radius: 8px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  min-width: 280px;
+}
+
+.a-table-section h3 {
+  margin-bottom: 1vw;
+  font-size: 1.1rem;
+  color: #2f3542;
+}
+
+.a-product-table,
+.a-stock-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.a-product-table th,
+.a-stock-table th {
+  background-color: #e3eafc;
+  color: #2f3542;
+  font-weight: 600;
+  padding: 0.7vw 1vw;
+  text-align: left;
+  border-bottom: 1px solid #cfd8e3;
+}
+
+.a-product-table td,
+.a-stock-table td {
+  padding: 0.5vw 1vw;
+  border-bottom: 1px solid #f1f2f6;
+  vertical-align: middle;
+}
+
+.a-status-badge {
+  display: inline-block;
+  padding: 0.3vw 1vw;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.a-status-badge.a-in-stock {
+  background-color: #e8f8ec;
+  color: #2ed573;
+}
+
+.a-status-badge.a-out-stock {
+  background-color: #ffeaea;
+  color: #ff4757;
+}
+
+.a-styled-stock-table td {
+  display: flex;
+  align-items: center;
+  gap: 0.5vw;
+  padding: 0.7vw 1vw;
+  font-size: 0.95rem;
+  border-bottom: 1px solid #f1f2f6;
+}
+
+.a-status-icon {
+  font-size: 1.1rem;
+  border-radius: 50%;
+  padding: 2px;
+}
+
+.a-status-icon.red {
+  color: #ff4757;
+}
+
+.a-status-icon.green {
+  color: #2ed573;
+}
+
+.a-status-text {
+  font-weight: 500;
+  color: #2f3542;
+}
+
+.a-stock-level {
+  font-weight: bold;
+  color: #1e272e;
+}
+
+.a-stock-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7vw;
+}
+
+.a-stock-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #f9fafe;
+  padding: 0.7vw 1vw;
+  border-radius: 6px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.a-product-name {
+  flex: 1;
+  font-weight: 500;
+  color: #2f3542;
+}
+
+.a-status {
+  flex: 1.5;
+  display: flex;
+  align-items: center;
+  gap: 0.4vw;
+  font-weight: 500;
+  color: #57606f;
+}
+
+.a-arrow {
+  font-size: 1.1rem;
+}
+
+.a-arrow.red {
+  color: #ff4757;
+}
+
+.a-arrow.green {
+  color: #2ed573;
+}
+
+.a-stock-level1,
+.a-stock-level2,
+.a-stock-level3,
+.a-stock-level4,
+.a-stock-level5,
+.a-stock-level6,
+.a-stock-level7 {
+  min-width: 40px;
+  text-align: right;
+  font-weight: bold;
+}
+
+.a-stock-level3,
+.a-stock-level6,
+.a-stock-level7 {
+  color: #4de74a;
+}
+
+.a-stock-level1,
+.a-stock-level2,
+.a-stock-level4,
+.a-stock-level5 {
+  color: #e74a4f;
+}
+
+.a-dashboard-greeting {
+  margin-bottom: 2vw;
+  padding: 2vw;
+  background-color: #e6f2ff;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.a-dashboard-greeting h2 {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 0.5vw;
+}
+
+.a-dashboard-greeting p {
+  font-size: 1rem;
+  color: #555;
+}
+
+.a-top-sales-banner {
+  background-color: #fff;
+  padding: 2vw;
+  border-radius: 8px;
+  margin-bottom: 2vw;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  text-align: center;
+}
+
+.a-top-sales-banner h3 {
+  font-size: 1.1rem;
+  color: #333;
+  margin-bottom: 0.7vw;
+}
+
+.a-sales-count {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #1e90ff;
+}
+
+@media (max-width: 900px) {
+  .a-charts-section,
+  .a-summary-section,
+  .a-product-stock-section {
+    flex-direction: column;
+    gap: 3vw;
+    padding: 3vw 2vw;
+  }
+
+  .a-chart-box,
+  .a-summary-card,
+  .a-table-section {
+    min-width: 0;
+    width: 100%;
+    flex: 1 1 100%;
+  }
+
+  .a-sidebar {
+    width: 60px;
+    min-width: 60px;
+  }
+}
+
+@media (max-width: 600px) {
+  .a-dashboard-greeting,
+  .a-top-sales-banner,
+  .a-charts-section,
+  .a-summary-section,
+  .a-product-stock-section {
+    padding: 4vw 2vw;
+  }
+
+  .a-metrics-title,
+  .a-metrics-title div,
+  .a-metric-label,
+  .a-metric-value,
+  .a-metric-change,
+  .a-table-section h3,
+  .a-product-table,
+  .a-stock-table,
+  .a-status-badge,
+  .a-status-icon,
+  .a-arrow {
+    font-size: 1rem !important;
+  }
+
+  .a-sales-count {
+    font-size: 1.3rem;
+  }
+
+  .a-sidebar {
+    width: 56px;
+    min-width: 56px;
+  }
+
+  .a-summary-card,
+  .a-chart-box,
+  .a-table-section {
+    padding: 1.2rem;
+  }
+
+  .a-dashboard-greeting h2 {
+    font-size: 1rem;
+  }
+
+  .a-dashboard-greeting p {
+    font-size: 0.9rem;
+  }
+
+  .a-status-badge {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+  }
+
+  .a-product-name,
+  .a-status-text,
+  .a-stock-level {
+    font-size: 0.9rem;
+  }
+}
