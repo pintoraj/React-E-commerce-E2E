@@ -1,0 +1,53 @@
+{
+  // ---- Editor: General Appearance & Behavior ----
+  "editor.fontSize": 12,
+  "editor.fontFamily": "Fira Code, Consolas, monospace",
+  "editor.wordWrap": "on",
+  "editor.minimap.enabled": false,
+  "editor.cursorBlinking": "smooth",
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.linkedEditing": true,
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": true,
+  "editor.tabSize": 2, // Default tab size
+  // ---- Formatting & Saving ----
+  "files.autoSave": "afterDelay",
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.organizeImports": "explicit"
+  },
+  // ---- File Handling ----
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  "files.exclude": {
+    "**/.git": true,
+    "**/node_modules": true
+  },
+  // ---- Workbench & UI ----
+  "workbench.colorTheme": "One Dark Pro",
+  // ---- Integrated Terminal ----
+  "terminal.integrated.fontSize": 14,
+  "terminal.integrated.fontFamily": "MesloLGS NF",
+  "terminal.integrated.defaultProfile.windows": "PowerShell",
+  "terminal.integrated.defaultProfile.linux": "bash",
+  "terminal.integrated.defaultProfile.osx": "zsh",
+  // ---- Source Control: Git ----
+  "git.enableSmartCommit": true,
+  "git.confirmSync": false,
+  "git.autofetch": true,
+  "diffEditor.ignoreTrimWhitespace": false,
+  // ---- Extension-Specific Settings ----
+  "prettier.singleQuote": true,
+  "prettier.trailingComma": "all",
+  // ---- Language-Specific Settings ----
+  "[javascript]": {
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[python]": {
+    "editor.tabSize": 4,
+    "editor.defaultFormatter": "ms-python.python"
+  }
+}
