@@ -17,13 +17,12 @@ const ProductListPage = () => {
     const getProducts = async () => {
       try{
         console.log("Fetching data...")
-        const allProducts = await axios.get("http://localhost:8080/products");
-        const allCategories= await axios.get("http://localhost:8080/categories")
+        const allProducts = await axios.get("http://localhost:8081/products");
+        const allCategories= await axios.get("http://localhost:8081/categories")
         setProducts(allProducts.data);
         setCategories(allCategories.data);
         console.log(allProducts.data);
         console.log(allCategories.data);
-
       }
       catch (error){
         console.log("Error fetching the product list", error);
