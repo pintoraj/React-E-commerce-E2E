@@ -1,0 +1,208 @@
+/* Home Wrapper */
+.p-home-wrapper {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* Hero Section Container */
+.p-hero-wrapper {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+}
+
+/* Individual Hero Slide */
+.p-hero-section {
+  position: absolute;
+  inset: 0;
+  height: 100vh;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  transition: opacity 1s ease-in-out;
+  z-index: 1;
+}
+
+.p-hero-section.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.p-hero-section.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Dark Overlay */
+.p-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 2;
+}
+
+/* Hero Content */
+.p-hero-content {
+  position: relative;
+  z-index: 3;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.p-hero-content.light {
+  align-items: center;
+  text-align: center;
+  color: #1e293b;
+}
+
+.p-hero-content.dark {
+  align-items: flex-start;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  color: #ffffff;
+}
+
+@media (min-width: 768px) {
+  .p-hero-content.dark {
+    padding-left: 6rem;
+    padding-right: 6rem;
+  }
+}
+
+/* Hero Subtitle */
+.p-hero-subtitle {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+}
+
+/* Hero Title */
+.p-hero-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+  .p-hero-title {
+    font-size: 4rem;
+  }
+}
+
+.p-hero-title.dark {
+  font-family: serif;
+}
+
+/* Highlighted Text */
+.p-hero-highlight {
+  color: #b45309;
+}
+
+/* Shop Button */
+.p-hero-button {
+  margin-top: 1.5rem;
+  padding: 0.75rem 2rem;
+  font-weight: 600;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+}
+
+.p-hero-button.light {
+  background-color: #ffffff;
+  color: #1e293b;
+}
+
+.p-hero-button.light:hover {
+  background-color: #4b5563;
+  color: #ffffff;
+}
+
+.p-hero-button.dark {
+  background-color: #ffffff;
+  color: #1e293b;
+}
+
+.p-hero-button.dark:hover {
+  background-color: #e5e7eb;
+}
+
+/* Scroll Button */
+.p-scroll-button {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: p-bounce 1.5s infinite;
+  z-index: 4;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+@keyframes p-bounce {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(-10px);
+  }
+}
+
+.p-chevron.light {
+  color: #6b7280;
+}
+
+.p-chevron.dark {
+  color: #ffffff;
+}
+
+/* Deals Section */
+.p-deals-section {
+  padding: 4rem 0;
+  background-color: #ffffff;
+}
+
+.p-deals-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.p-view-all {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.p-view-all-button {
+  font-weight: 600;
+  color: #4b5563;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.p-view-all-button:hover {
+  color: #2563eb;
+}
+
+/* Arrivals Section */
+.p-arrivals-section {
+  padding: 4rem 0;
+  background-color: #f8fafc;
+}
+
+.p-arrivals-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}

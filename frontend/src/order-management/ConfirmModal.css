@@ -1,0 +1,75 @@
+.o-confirm-modal {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.o-confirm-card {
+  background: #fff;
+  padding: 24px;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 480px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.o-confirm-card h3 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.o-confirm-section {
+  font-size: 14px;
+  color: #333;
+}
+
+.o-confirm-section ul {
+  padding-left: 18px;
+  margin: 6px 0;
+}
+
+.o-confirm-section li {
+  margin-bottom: 4px;
+}
+
+.o-confirm-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.o-confirm-actions button {
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+}
+
+.o-confirm-actions button:first-child {
+  background: #f2f2f6;
+  color: #333;
+}
+
+.o-confirm-actions button:last-child {
+  background: #28a745;
+  color: #fff;
+}
+
+.o-confirm-actions button:last-child:hover {
+  opacity: 0.95;
+  transform: translateY(-1px);
+}

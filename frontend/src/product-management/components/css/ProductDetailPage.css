@@ -1,0 +1,240 @@
+.p-detail-wrapper {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.p-detail-page {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.p-detail-message {
+  text-align: center;
+  font-size: 1.2rem;
+  padding: 4rem;
+}
+
+.p-detail-main-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .p-detail-main-content {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.p-detail-image-gallery {
+  width: 100%;
+}
+
+.p-detail-main-image {
+  width: 100%;
+  max-height: 500px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #eee;
+}
+
+.p-detail-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.p-detail-title {
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.p-detail-brand {
+  font-size: 1rem;
+  color: #555;
+  text-transform: uppercase;
+}
+
+.p-detail-price {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #b12704;
+  margin: 0.5rem 0;
+}
+
+.p-detail-stock-in {
+  color: #007600;
+  font-weight: 600;
+}
+.p-detail-stock-out {
+  color: #b12704;
+  font-weight: 600;
+}
+
+.p-detail-description {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #333;
+}
+
+.p-detail-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
+.p-quantity-selector {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.p-quantity-selector label {
+  font-weight: 600;
+}
+
+.p-quantity-selector input {
+  width: 60px;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+.p-add-to-cart-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.p-add-to-cart-btn:hover {
+  background-color: #0056b3;
+}
+
+.p-add-to-cart-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Star Rating */
+.p-star-rating {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+.p-star-rating .filled {
+  color: #f59e0b;
+}
+.p-star-rating .p-rating-text {
+  margin-left: 0.5rem;
+  font-weight: 600;
+  color: #333;
+}
+.p-no-rating {
+  font-style: italic;
+  color: #777;
+}
+
+/* Reviews Section */
+.p-detail-reviews-section {
+  border-top: 2px solid #eee;
+  padding-top: 2rem;
+  margin-top: 1rem;
+}
+
+/* ... (Keep all your existing styles) ... */
+
+/* 🆕 Styles for Tabs */
+.p-detail-tabs-section {
+  width: 100%;
+  margin-top: 2rem;
+  border-top: 2px solid #eee;
+  padding-top: 1rem;
+}
+
+.p-detail-tabs {
+  display: flex;
+  gap: 1rem;
+  border-bottom: 2px solid #eee;
+  margin-bottom: 1.5rem;
+}
+
+.p-tab-btn {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #555;
+  background: none;
+  border: none;
+  padding: 0.75rem 0.25rem;
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px; /* Aligns with the container's border */
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.p-tab-btn:hover {
+  color: #000;
+}
+
+.p-tab-btn.active {
+  color: #007bff;
+  border-bottom-color: #007bff;
+}
+
+.p-detail-tab-content {
+  padding: 1rem 0;
+  line-height: 1.6;
+}
+
+/* 🆕 Styles for Specifications Tab */
+.p-detail-specs {
+  max-width: 600px; /* Or whatever width you prefer */
+}
+
+.p-specs-list {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.p-spec-item {
+  display: flex;
+  padding: 0.5rem;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.p-spec-item:nth-child(odd) {
+  background-color: #f9f9f9;
+}
+
+.p-spec-item strong {
+  flex-basis: 150px; /* Adjust as needed */
+  color: #333;
+}
+
+.p-spec-item span {
+  flex: 1;
+  color: #555;
+}
+
+/* 🛑 You can remove this old selector if it exists */
+/* .p-detail-reviews-section {
+  border-top: 2px solid #eee;
+  padding-top: 2rem;
+  margin-top: 1rem;
+} 
+*/

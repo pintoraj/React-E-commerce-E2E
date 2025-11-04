@@ -1,0 +1,171 @@
+.o-checkout-card {
+  background: #fcfcff;
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  transform: translateY(40px);
+  opacity: 0;
+  animation: o-cardIn 0.4s forwards;
+}
+
+@keyframes o-cardIn {
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.o-checkout-card h3 {
+  margin: 0 0 16px 0;
+  font-size: 20px;
+  font-weight: 700;
+  color: #1a1a1a;
+  border-bottom: 1px solid #e8e8f0;
+  padding-bottom: 8px;
+}
+
+.o-selected-addr p {
+  margin: 0;
+  font-size: 14px;
+  color: #333;
+}
+
+.o-estimated-date {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #333;
+}
+
+.o-default-date {
+  color: #1a1a1a;
+  font-weight: 500;
+}
+
+.o-date-status {
+  color: #777;
+  font-size: 12px;
+  font-style: italic;
+  margin-left: 4px;
+}
+
+.o-change-date-btn {
+  background: transparent;
+  border: 1px solid #cfcff7;
+  color: #5f6af2;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: 8px;
+  transition: all 0.2s ease-in-out;
+}
+.o-change-date-btn:hover {
+  background: #f5f5ff;
+  box-shadow: 0 4px 12px rgba(95,106,242,0.08);
+}
+
+.o-delay-section {
+  margin-top: 8px;
+  margin-bottom: 16px;
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(-5px);
+  transition: max-height 0.35s ease, opacity 0.3s ease, transform 0.3s ease;
+}
+.o-delay-section.o-open {
+  max-height: 200px;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.o-delay-section select {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid #cfcff7;
+  font-size: 14px;
+  background: #fff;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 4px 10px rgba(95, 106, 242, 0.08);
+  color: #1a1a1a;
+}
+.o-delay-section select:hover {
+  border-color: #5f6af2;
+  box-shadow: 0 6px 14px rgba(95, 106, 242, 0.12);
+}
+.o-delay-section select:focus {
+  border-color: #3f4ce0;
+  box-shadow: 0 0 0 3px rgba(95, 106, 242, 0.2);
+}
+
+.o-items-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.o-item-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+}
+
+.o-total {
+  margin-top: 12px;
+  font-weight: 700;
+  font-size: 18px;
+  color: #5f6af2;
+  text-align: right;
+  transition: transform 0.25s ease, color 0.25s ease;
+}
+.o-total.o-pulse-on-hover:hover {
+  transform: scale(1.03);
+  color: #3f4ce0;
+}
+
+.o-proceed-btn {
+  position: sticky;
+  bottom: 0;
+  width: 100%;
+  margin-top: 20px;
+  background: #5f6af2;
+  color: #fff;
+  border: none;
+  border-radius: 14px;
+  padding: 16px 0;
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  transition: all 0.2s ease-in-out;
+  z-index: 100;
+}
+.o-proceed-btn:hover {
+  opacity: 0.95;
+  transform: translateY(-2px);
+}
+.o-proceed-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background: #a3b0f5;
+}
+
+@media (max-width: 900px) {
+  .o-checkout-card {
+    padding: 20px;
+  }
+  .o-estimated-date {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+  .o-change-date-btn {
+    align-self: flex-start;
+  }
+}

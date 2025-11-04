@@ -1,0 +1,28 @@
+.u-minimal-footer {
+  background-color: #f9fafb;
+  border-top: 1px solid #e5e7eb;
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+.u-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.u-text-center {
+  text-align: center;
+}
+
+.u-py-4 {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.u-text-sm {
+  font-size: 0.875rem;
+}
+
+.u-text-muted {
+  color: #6b7280;
+}

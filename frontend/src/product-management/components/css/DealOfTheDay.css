@@ -1,0 +1,125 @@
+/* Wrapper */
+.p-deal-wrapper {
+  padding: 2rem 1rem;
+  background-color: #ffffff;
+}
+
+/* Header Layout */
+.p-deal-header {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+  .p-deal-header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+/* Title Block */
+.p-deal-title {
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .p-deal-title {
+    text-align: left;
+  }
+}
+
+.p-deal-title h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #1e293b;
+  letter-spacing: -0.5px;
+}
+
+@media (min-width: 640px) {
+  .p-deal-title h2 {
+    font-size: 2.5rem;
+  }
+}
+
+.p-highlight {
+  color: #f59e0b;
+}
+
+.p-deal-title p {
+  margin-top: 0.5rem;
+  color: #64748b;
+  font-size: 1rem;
+}
+
+/* Countdown Timer */
+.p-countdown {
+  display: flex;
+  gap: 0.5rem;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .p-countdown {
+    gap: 1rem;
+  }
+}
+
+.p-countdown div {
+  background-color: #f3f4f6;
+  padding: 0.75rem;
+  border-radius: 0.75rem;
+  min-width: 60px;
+}
+
+.p-countdown span {
+  font-size: 1.5rem;
+  font-weight: bold;
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .p-countdown span {
+    font-size: 1.75rem;
+  }
+}
+
+.p-countdown p {
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  color: #374151;
+}
+
+/* Deal Ended Message */
+.p-deal-ended {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #ef4444;
+}
+
+/* Product Grid */
+.p-deal-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .p-deal-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 768px) {
+  .p-deal-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .p-deal-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

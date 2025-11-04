@@ -1,0 +1,127 @@
+.o-delivery-info {
+  background: #f2f2f6;
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 14px;
+}
+
+.o-delivery-info button {
+  margin-top: 8px;
+  background: transparent;
+  border: 1px solid #5f6af2;
+  color: #5f6af2;
+  font-weight: 600;
+  padding: 6px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.o-delivery-info button:hover {
+  background: #5f6af2;
+  color: #fff;
+}
+
+.o-items-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.o-item-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+}
+
+.o-total-row {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 700;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.o-verified-upi,
+.o-card-preview {
+  font-size: 13px;
+  color: #333;
+  margin-top: 6px;
+}
+
+.o-validation-error {
+  font-size: 12px;
+  color: red;
+  margin-top: 6px;
+}
+
+.o-payment-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.o-payment-actions button {
+  flex: 1;
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  background: #28a745;
+  color: #fff;
+  transition: all 0.2s ease-in-out;
+}
+
+.o-payment-actions button:hover {
+  opacity: 0.95;
+  transform: translateY(-1px);
+}
+
+.o-payment-actions button:disabled {
+  background: #ccc !important;
+  color: #666 !important;
+  cursor: not-allowed !important;
+  opacity: 0.6;
+}
+
+.o-payment-actions button.o-processing {
+  background: #28a745;
+  color: #fff;
+  position: relative;
+}
+
+.o-payment-actions button.o-processing::after {
+  content: "";
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  width: 14px;
+  height: 14px;
+  border: 2px solid #fff;
+  border-top: 2px solid transparent;
+  border-radius: 50%;
+  animation: o-spin 0.8s linear infinite;
+  transform: translateY(-50%);
+}
+
+@keyframes o-spin {
+  to { transform: translateY(-50%) rotate(360deg); }
+}
+
+.o-pricing-breakdown {
+  margin-top: 1rem;
+}
+
+.o-price-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.o-price-row.o-total {
+  font-weight: bold;
+  border-top: 1px solid #ccc;
+  padding-top: 0.5rem;
+}

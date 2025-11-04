@@ -1,0 +1,272 @@
+.o-track-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 40px 0;
+}
+
+.o-track-page {
+  width: 100%;
+  max-width: 960px;
+  padding: 0 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.o-track-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.o-track-header h2 {
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.o-back-btn {
+  background: none;
+  border: none;
+  color: #5f6af2;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+.o-back-btn:hover {
+  opacity: 0.7;
+}
+
+.o-loading-text {
+  font-size: 16px;
+  color: #666;
+  text-align: center;
+  margin-top: 60px;
+}
+
+.o-track-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  transition: box-shadow 0.3s ease;
+}
+.o-track-card:hover {
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+}
+
+.o-track-card.o-cancelled {
+  opacity: 0.7;
+  border: 1px solid #f44336;
+}
+
+.o-track-summary {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.o-meta-label {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.o-track-summary p {
+  margin: 4px 0 0;
+  font-size: 14px;
+  color: #222;
+  line-height: 1.4;
+}
+
+.o-track-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.o-delivery-countdown {
+  font-size: 16px;
+  font-weight: 600;
+  color: #2e7d32;
+}
+
+.o-progress-bar {
+  height: 6px;
+  background: #e0e0e0;
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+}
+
+.o-progress-fill {
+  height: 100%;
+  background: #5f6af2;
+  transition: width 0.4s ease;
+}
+
+.o-timeline-bar {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+.o-timeline-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+  min-width: 80px;
+  text-align: center;
+}
+
+.o-step-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #ccc;
+  transition: background 0.3s ease;
+}
+
+.o-timeline-step.o-active .o-step-dot {
+  background: #5f6af2;
+}
+
+.o-timeline-step span {
+  font-size: 12px;
+  font-weight: 600;
+  color: #555;
+}
+
+.o-timeline-step.o-active span {
+  color: #5f6af2;
+}
+
+.o-stage-time {
+  font-size: 11px;
+  color: #888;
+}
+
+.o-agent-info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 12px;
+  padding: 16px;
+  background: #f9f9ff;
+  border-radius: 8px;
+}
+
+.o-agent-info img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.o-agent-name {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.o-agent-contact {
+  font-size: 13px;
+  color: #555;
+  margin: 2px 0 0;
+}
+
+.o-track-products {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+
+.o-track-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  width: 100px;
+  text-align: center;
+}
+
+.o-track-item img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  border-radius: 8px;
+  background: #f0f0f0;
+  border: 1px solid #ddd;
+  transition: transform 0.2s ease;
+}
+
+.o-track-item img:hover {
+  transform: scale(1.05);
+}
+
+.o-track-item p {
+  font-size: 13px;
+  color: #333;
+  line-height: 1.2;
+  word-break: break-word;
+}
+
+.o-cancelled-message {
+  background: #fff0f0;
+  border: 1px solid #f44336;
+  padding: 16px;
+  border-radius: 8px;
+  margin-top: 16px;
+  font-weight: 500;
+  color: #d32f2f;
+  text-align: center;
+}
+.o-back-btn:focus,
+.o-timeline-step:focus-within,
+.o-track-item img:focus {
+  outline: 2px solid #5f6af2;
+  outline-offset: 2px;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .o-track-page {
+    padding: 0 16px;
+  }
+
+  .o-track-summary {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .o-timeline-bar {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .o-track-products {
+    justify-content: flex-start;
+  }
+
+  .o-agent-info {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .o-agent-info img {
+    margin-bottom: 8px;
+  }
+}

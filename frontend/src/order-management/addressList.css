@@ -1,0 +1,133 @@
+.o-addresses {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.o-addr-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 18px;
+  border-radius: 14px;
+  border: 1px solid transparent;
+  background: #ffffff;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out, transform 0.25s ease;
+  opacity: 0;
+  transform: translateY(10px);
+  animation: o-fadeInUp 0.4s forwards;
+}
+
+@keyframes o-fadeInUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.o-addr-card:hover {
+  box-shadow: 0 12px 28px rgba(95,106,242,0.1);
+  background: linear-gradient(90deg, #f5f5ff, #eaeaff);
+}
+
+.o-addr-card.o-selected {
+  border-color: #dfe7ff;
+  background: #f9f9ff;
+  box-shadow: 0 10px 28px rgba(95,106,242,0.16);
+  transform: scale(1.02);
+}
+
+.o-addr-card input[type="radio"] {
+  margin-top: 6px;
+  accent-color: #5f6af2;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  appearance: auto;
+}
+
+
+.o-addr-card div {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  color: #333;
+}
+
+.o-addr-name {
+  font-weight: 700;
+}
+
+.o-addr-line {
+  color: #666;
+  font-size: 13px;
+}
+
+.o-no-addr {
+  padding: 12px;
+  border-radius: 10px;
+  background: #fff6f6;
+  color: #777;
+}
+
+.o-inline-add-btn {
+  background: none;
+  border: none;
+  color: #5f6af2;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+}
+.o-inline-add-btn:hover {
+  text-decoration: underline;
+}
+
+.o-add-btn {
+  margin-top: 16px;
+  align-self: flex-start;
+  background: transparent;
+  border: 1px dashed #cfcff7;
+  padding: 10px 14px;
+  border-radius: 12px;
+  cursor: pointer;
+  color: #5f6af2;
+  font-weight: 600;
+  transition: all 0.2s ease-in-out;
+}
+
+.o-add-btn:hover {
+  background: #f5f5ff;
+  box-shadow: 0 6px 18px rgba(95,106,242,0.06);
+}
+
+.o-toggle-extra-btn {
+  margin-top: 8px;
+  background: transparent;
+  border: 1px solid #cfcff7;
+  padding: 8px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #5f6af2;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.2s ease-in-out;
+}
+
+.o-toggle-extra-btn:hover {
+  background: #f5f5ff;
+  box-shadow: 0 4px 12px rgba(95,106,242,0.08);
+}
+
+.o-extra-addresses {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.35s ease;
+}
+
+.o-extra-addresses.o-open {
+  max-height: 500px;
+}
+
+@media (max-width: 900px) {
+  .o-addresses {
+    gap: 12px;
+  }
+}
